@@ -83,6 +83,109 @@ a {
     transition: background-color 0.3s ease;
 }
 
-.kotaklogin{
+.kotakbesar{
     margin-top: 110px;
+    background-color: #75171E;
+    border-radius: 15px;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-bottom: 215px;
+    display: flex;          
+    overflow: hidden;
 }
+
+.gambar {
+    flex: 1;
+    height: 100%;
+}
+
+.gambar img {
+    height: 100%;
+    width: auto;
+    object-fit: cover; 
+    display: block;
+}
+
+
+.logo{
+    margin-bottom: 70px;
+}
+
+.logo img{
+    width: 170px;
+}
+
+.text{
+    font-family: arial;
+    color: #EFF3FD;
+}
+
+.text h3{
+    margin-bottom: 5px;
+}
+
+.text input{
+    width: 450px;
+    height: 50px;
+    background-color: #EFF3FD;
+    border-radius: 10px;
+    border: none;
+}
+
+.email{
+    margin-bottom: 15px;
+}
+
+.kanan{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 80px;
+    width: 600px;
+}
+
+.tombol button{
+    color: #EFF3FD;
+    font-family: arial;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 40px;
+    padding-right: 40px;
+    background-color: #911E25;
+    border-radius: 10px;
+    margin-top: 20px;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.tombol button:hover{
+    background-color: #FF2D46;  
+    color: #EFF3FD;
+}
+
+.tulisan{
+    font-family: arial;
+    padding-top: 120px;
+    display: flex;
+    gap: 5px;
+}
+
+.teks_satu{
+    color: #EFF3FD;
+}
+
+.teks_dua{
+    color: #FF2D46;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.teks_dua:hover{
+    color: #EFF3FD;
+}
+
+

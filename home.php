@@ -16,7 +16,9 @@
             <a href="register.php"><h4>Register</h4></a>
         </div>
 
-        <div class="login"><a href="login.php"><h4>Log in</h4></a></div>  
+        <div class="login">
+            <a href="login.php"><h4>Log in</h4></a>
+        </div>  
     </div>    
 </header>
 
@@ -54,7 +56,7 @@
                     <img src="gambar/badmin home.png" alt="Badminton">
                     <div class="isibawah">
                         <a href="booking.php"><h3>90.000/Jam</h3></a>
-                        <button>Pesan</button>
+                        <a href="booking.php"><button>Pesan</button></a>
                     </div>
                 </div>
             </div>
@@ -65,7 +67,7 @@
                     <img src="gambar/basket home.png" alt="Basket">
                     <div class="isibawah">
                         <a href="booking.php"><h3>90.000/Jam</h3></a>
-                        <button>Pesan</button>
+                        <a href="booking.php"><button>Pesan</button></a>
                     </div>
                 </div>
             </div>
@@ -76,7 +78,7 @@
                     <img src="gambar/Voli home.png" alt="Voli">
                     <div class="isibawah">
                         <a href="booking.php"><h3>90.000/Jam</h3></a>
-                        <button>Pesan</button>
+                        <a href="booking.php"><button>Pesan</button></a>
                     </div>
                 </div>
             </div>
