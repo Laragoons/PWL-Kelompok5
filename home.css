@@ -169,6 +169,10 @@ a {
     border-radius: 10px;
 }
 
+.kotak img{
+    max-height: 230px;
+}
+
 .menulapangan button{
     font-family: arial;
     color: #EFF3FD;
