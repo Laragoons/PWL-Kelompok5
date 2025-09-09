@@ -1,0 +1,266 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    display: flex;
+    justify-content: right;
+    gap: 20px;
+    justify-content: space-between;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header img{
+    width: 115px;
+    margin-top: 10px;
+    margin-left: 35px;
+    margin-bottom: 10px;
+}
+
+.navbar{
+    font-family: arial;
+    display: flex;
+    gap: 20px;
+    justify-content: right;
+    margin-right: 35px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: black; 
+    transition: color 0.3s ease; 
+}
+
+.navbar a:hover {
+    color: #911E25; 
+}
+
+.login a {
+    color: #EFF3FD; 
+    text-decoration: none; 
+    display: inline-block; 
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.login:hover a {
+    color: #EFF3FD; 
+}
+
+.login:hover {
+    background-color: #FF2D46; 
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.garis{
+    width: 2px;
+    height: 20px;
+    background-color: #75171E;
+}
+
+.link {
+    display: flex;
+    gap: 20px;
+    padding-top: 10px;
+}
+
+.login{
+    background-color: #75171E; 
+    color: #FFFFFF;
+    border-radius: 4px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 20px;
+    padding-left: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.slideshow{
+    display: flex;
+    justify-content: center;
+    padding-top: 80px;
+}
+
+.bentukload{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    padding-top: 50px;
+    padding-bottom: 80px;
+}
+
+.panjang{
+    width: 50px;
+    height: 20px;
+    background-color: #75171E;
+    border-radius: 20px;
+}
+
+.bulat{
+    width: 20px;
+    height: 20px;
+    background-color: #911E25;
+    border-radius: 50%;
+}
+
+
+.pilihlapangan{
+    margin-bottom: 150px;
+}
+
+.judullapangan{
+    font-family: arial;
+    color: #911E25;
+    padding-bottom: 30px;
+    padding-left: 70px;
+}
+
+.menulapangan{
+    font-family: arial;
+    color: #EFF3FD;
+    display: flex;
+    margin-left: 60px;
+    margin-right: 60px;
+    justify-content: center;
+    gap: 35px;
+}
+
+.isi{
+    padding:30px 30px 20px 30px;
+}
+
+.isi img{
+    width: 235px;
+    padding-top: 25px;
+}
+
+.isibawah{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+    align-items: center;
+}
+
+.isibawah button {
+  background-color: #FF2D46;   
+  color: #EFF3FD;              
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.isibawah button:hover {
+  background-color: #FF2D46;  
+  color: #EFF3FD;
+}
+
+.kotak{
+    background-color: #911E25;
+    border-radius: 10px;
+}
+
+.menulapangan button{
+    font-family: arial;
+    color: #EFF3FD;
+    padding: 15px 35px 15px 35px;
+    background-color: #75171E;
+    border: none;
+    border-radius: 4px;
+}
+
+footer{
+    background-color: #911E25;
+}
+
+.logofooter img{
+    padding-top: 90px;
+    padding-left: 60px;
+    padding-bottom: 40px;
+    width: 175px;
+}
+
+.footer1{
+    padding-left: 60px;
+    font-family: Arial;
+    color: #EFF3FD;
+    padding-bottom: 60px;
+}
+
+.medsos{
+    padding-left: 60px;
+    display: flex;
+    gap: 20px;
+}
+
+.medsos img{
+    width: 50px;
+}
+
+.footeratas2{
+    color: #EFF3FD;
+    font-family: arial;
+    display: flex;
+    justify-content: right;
+    gap: 160px;
+    margin-right: 140px;
+    padding-top: 90px;
+}
+
+.about h3{
+    padding-bottom: 50px;
+}
+
+.about p{
+    padding-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.social h3{
+    padding-bottom: 50px;
+}
+
+.social p{
+    padding-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;    
+}
+
+.footeratas{
+    display: flex;
+    gap: 480px;
+}
+
+footer hr{
+    width: 92%;
+    margin: 0 auto;
+}
+
+.footerbawah{
+    font-family: arial;
+    color: #EFF3FD;
+    padding-left: 60px;
+    padding-bottom: 60px;
+    padding-top: 40px;
+    padding-right: 60px;
+    display: flex;
+    gap: 675px;
+}
+
+.footerbawah2{
+    display: flex;
+    gap: 60px;
+}
+
