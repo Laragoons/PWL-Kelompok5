@@ -19,7 +19,7 @@
 <p>6. Pengguna melakukan booking dan mengisi data booking.</p>
 <p>7. Pengguna mengkonfirmasi pemesanan.</p>
 
-<p><b>Admin</b></p>\
+<p><b>Admin</b></p>
 <p>1. Admin masuk ke home page</p>
 <p>2. Admin log in dengan akun khusus admin</p>
 <p>3. Admin masuk ke admin panel dan mengecek dashboard dan pemesanan terbaru</p>
