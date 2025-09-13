@@ -213,9 +213,7 @@ footer{
 .footeratas2{
     color: #EFF3FD;
     font-family: arial;
-    display: flex;
     justify-content: right;
-    gap: 160px;
     margin-right: 140px;
     padding-top: 90px;
 }
@@ -244,7 +242,7 @@ footer{
 
 .footeratas{
     display: flex;
-    gap: 480px;
+    gap: 780px;
 }
 
 footer hr{
@@ -263,8 +261,4 @@ footer hr{
     gap: 675px;
 }
 
-.footerbawah2{
-    display: flex;
-    gap: 60px;
-}
 
