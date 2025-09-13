@@ -105,14 +105,6 @@
             </div>
 
             <div class="footeratas2">
-                <div class="about">
-                    <h3>About</h3>
-                    <p>How it works</p>
-                    <p>Featured</p>
-                    <p>Partnership</p>
-                    <p>Business Relation</p>
-                </div>
-
                 <div class="social">
                     <h3>Socials</h3>
                     <p>Discord</p>
@@ -128,11 +120,6 @@
         <div class="footerbawah">
             <div class="footerbawah1">
                 <p>©2022 EAASPORTSTIME. All rights reserved</p>
-            </div>
-
-            <div class="footerbawah2">
-                <p>Privacy & Policy</p>
-                <p>Terms & Condition</p>
             </div>
         </div>
 
