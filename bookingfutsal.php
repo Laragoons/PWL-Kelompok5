@@ -97,7 +97,8 @@
             <div class="form-group">
                 <label for="email_pemesan">Email Pemesan (Optional) :</label>
                 <input type="email" id="email_pemesan" name="email_pemesan">
-            </div>
+             <div class="form-actions">
+            <button type="submit" class="booking-button">Booking</button>
         </div>
         </form>
 </main>
