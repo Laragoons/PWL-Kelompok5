@@ -63,11 +63,21 @@ a {
     white-space: nowrap;
 }
 
-.back{
+.back a {
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 15px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.back a h1 {
+    transition: color 0.3s ease;
+}
+
+.back a:hover h1 {
+    color: #FF2D46;
 }
 
 .tanggal{
@@ -77,3 +87,125 @@ a {
     gap: 15px;
 }
 
+.tanggal {
+    position: relative;
+}
+
+.tanggal-label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.dropdown-toggle {
+    display: none;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    min-width: 220px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    list-style: none;
+    padding: 10px 0;
+    margin-top: 10px;
+    z-index: 10;
+}
+
+.dropdown-toggle:checked ~ .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu li a {
+    display: block;
+    padding: 12px 20px;
+    color: #333;
+    text-decoration: none;
+    font-family: arial;
+    font-size: 16px;
+    white-space: nowrap;
+}
+
+.dropdown-menu li a:hover {
+    background-color: #f1f1f1;
+    color: #911E25;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 20px;
+    color: #444;
+}
+
+.table-container {
+    margin-left: 50px;
+    margin-right: 50px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+}
+
+th {
+    color: #911E25;
+    text-align: center;
+    padding: 20px 20px;
+    border-bottom: 2px solid #f0f0f0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+td {
+    padding: 18px 20px;
+    border-bottom: 1px solid #f0f0f0;
+    vertical-align: middle;
+    font-size: 18px;
+    text-align: center;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.status-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.status-icons img {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.icon-wrapper {
+    background-color: #EFF3FD;
+    border-radius: 10px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-wrapper img {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    object-fit: contain;
+}
