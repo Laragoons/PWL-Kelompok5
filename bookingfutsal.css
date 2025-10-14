@@ -19,6 +19,141 @@ header img{
     margin-bottom: 10px;
 }
 
+/* Styling untuk bagian konten utama */
+.content-container {
+    width: 90%; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 20px 0 50px; 
+}
+
+/* Judul Halaman */
+.page-title {
+    font-size: 2em; 
+    /* Mengubah warna judul menjadi merah gelap */
+    color: #991E25; 
+    margin-bottom: 20px;
+    font-weight: 500; 
+    font-family: sans-serif; 
+}
+
+/* Gambar Lapangan Futsal */
+.futsal-court-image {
+    width: 100%;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+.futsal-court-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Form Pemesanan */
+.booking-form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px; 
+}
+
+/* Baris Waktu (Jam Mulai & Selesai) */
+.form-row.time-selection {
+    display: flex;
+    gap: 40px; 
+}
+
+/* Grup Form */
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-row.time-selection .form-group {
+    flex-basis: 150px; 
+}
+
+/* Label */
+.form-group label {
+    font-size: 0.9em;
+    /* Mengubah warna teks label menjadi merah gelap */
+    color: #991E25; 
+    margin-bottom: 5px;
+}
+
+/* Styling untuk dropdown jam (Select) */
+.time-select {
+    padding: 8px 10px;
+    /* Mengubah warna border menjadi merah gelap */
+    border: 1px solid #991E25; 
+    border-radius: 4px;
+    font-size: 1em;
+    width: 100%; 
+    appearance: none; 
+    background-color: white;
+    /* Panah dropdown kustom tetap hitam */
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23000%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13.2-5.4H18.6c-5%200-9.3%201.8-13.2%205.4A17.6%2017.6%200%200%200%200%2082.7c0%204.8%201.8%209.1%205.4%2013.2l128%20128c3.9%203.9%208.7%205.8%2013.2%205.8s9.3-1.9%2013.2-5.8l128-128c3.6-3.6%205.4-7.8%205.4-13.2%200-4.8-1.8-9.1-5.4-13.2z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 10px;
+    cursor: pointer;
+}
+
+/* Baris Detail Pengguna */
+.form-row.user-details {
+    display: flex;
+    gap: 20px; 
+}
+
+.form-row.user-details .form-group {
+    flex: 1; 
+}
+
+/* Input Teks/Tanggal/Email */
+.form-group input {
+    padding: 8px 10px;
+    /* Mengubah warna border menjadi merah gelap */
+    border: 1px solid #991E25; 
+    border-radius: 4px;
+    font-size: 1em;
+    box-sizing: border-box; 
+    width: 100%;
+}
+
+/* Grup Input WA (Nomor WA Pemesan) */
+.wa-input-wrapper {
+    display: flex;
+    /* Mengubah border wrapper menjadi merah gelap */
+    border: 1px solid #991E25; 
+    border-radius: 4px;
+    overflow: hidden; 
+}
+
+.wa-input-wrapper .country-code {
+    /* Mengubah warna latar belakang abu-abu menjadi merah muda atau warna yang lebih terang */
+    background-color: #fce4e4; 
+    padding: 8px 10px;
+    /* Mengubah garis pemisah menjadi merah gelap */
+    border-right: 1px solid #991E25; 
+    font-size: 1em;
+    /* Mengubah warna teks kode negara menjadi merah gelap */
+    color: #991E25;
+    white-space: nowrap;
+}
+
+.wa-input-wrapper input[type="tel"] {
+    border: none; 
+    border-radius: 0; 
+    flex-grow: 1; 
+    padding: 8px 10px;
+}
+
+/* Styling untuk Input Date (Tanggal Pemesanan) */
+input[type="date"] {
+    height: 38px; 
+    line-height: normal; 
+}
+
 .navbar{
     font-family: arial;
     display: flex;
