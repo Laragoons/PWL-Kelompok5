@@ -83,9 +83,138 @@ a {
     transition: background-color 0.3s ease;
 }
 
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    margin: 0;
+}
+
+.content-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.page-title {
+    font-size: 36px;
+    color: #911E25;
+    margin-bottom: 20px;
+}
+
+.futsal-court-image {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 40px;
+    border: 1px solid #ddd;
+}
+
+.futsal-court-image img {
+    width: 100%;
+    display: block;
+}
+
+.booking-form {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 200px;
+}
+
+label {
+    margin-bottom: 8px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #911E25;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="tel"],
+input[type="email"],
+select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+.input-group {
+    display: flex;
+}
+
+.input-group-text {
+    background-color: transparent;
+    border: 1px solid #ccc;
+    border-right: none;
+    border-radius: 8px 0 0 8px;
+    color: #FF2D46;
+    font-weight: bold;
+    padding: 12px 15px;
+}
+
+.input-group input {
+    border-left: none;
+    border-radius: 0 8px 8px 0;
+}
+
+.submit-row {
+    justify-content: center;
+}
+
+.submit-button {
+    width: 100%;
+    max-width: 300px;
+    padding: 15px;
+    background-color: #FF2D46;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #e0213a;
+}
+
+.time-group {
+    flex-direction: row;
+    align-items: center;
+    flex: none;
+}
+
+.time-group label {
+    margin-bottom: 0;
+    margin-right: 15px;
+    width: 150px;
+}
+
+.time-group select {
+    width: 120px;
+    border-radius: 25px;
+}
+
 footer{
     background-color: #911E25;
-    margin-top: 100px;
+    margin-top: 40px;
 }
 
 .logofooter img{

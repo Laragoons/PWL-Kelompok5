@@ -45,7 +45,7 @@
                     <img src="gambar/futsal home.png" alt="Futsal">
                     <div class="isibawah">
                         <h3>90.000/Jam</h3>
-                        <a href="booking.php"><button>Pesan</button></a>
+                        <a href="bookingfutsal.php"><button>Pesan</button></a>
                     </div>
                 </div>
             </div>
@@ -55,8 +55,8 @@
                     <h3>Badminton</h3>
                     <img src="gambar/badmin home.png" alt="Badminton">
                     <div class="isibawah">
-                        <a href="booking.php"><h3>90.000/Jam</h3></a>
-                        <a href="booking.php"><button>Pesan</button></a>
+                        <h3>90.000/Jam</h3>
+                        <a href="bookingbadmin.php"><button>Pesan</button></a>
                     </div>
                 </div>
             </div>
@@ -66,19 +66,19 @@
                     <h3>Basket</h3>
                     <img src="gambar/basket home.png" alt="Basket">
                     <div class="isibawah">
-                        <a href="booking.php"><h3>90.000/Jam</h3></a>
-                        <a href="booking.php"><button>Pesan</button></a>
+                        <h3>90.000/Jam</h3>
+                        <a href="bookingbasket.php"><button>Pesan</button></a>
                     </div>
                 </div>
             </div>
 
             <div class="kotak">
                 <div class="isi">
-                    <h3>Badminton</h3>
+                    <h3>Voli</h3>
                     <img src="gambar/Voli home.png" alt="Voli">
                     <div class="isibawah">
-                        <a href="booking.php"><h3>90.000/Jam</h3></a>
-                        <a href="booking.php"><button>Pesan</button></a>
+                        <h3>90.000/Jam</h3>
+                        <a href="bookingvoli.php"><button>Pesan</button></a>
                     </div>
                 </div>
             </div>
