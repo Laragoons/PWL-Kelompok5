@@ -1,4 +1,4 @@
-* {
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -134,7 +134,6 @@ input[type="date"] {
 }
 
 .form-actions {
-    /* MENGATUR TOMBOL KE TENGAH */
     display: flex;
     justify-content: center; 
     margin-top: 10px;
