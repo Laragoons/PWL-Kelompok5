@@ -3,11 +3,11 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Pemesanan</title>
-    <link rel="stylesheet" href="datapemesanan.css">
+    <link rel="stylesheet" href="../css/datapemesanan.css">
 </head>
 
 <header>
-    <img src="gambar/EEA Red.png" alt="logo">
+    <img src="../gambar/EEA Red.png" alt="logo">
     <div class="navbar">
         <div class="link">
             <a href="home.php"><h4>Home</h4></a>
@@ -20,7 +20,7 @@
     <div class="head_table">
         <div class="back">
             <a href="adminpanel.php">
-                <img src="gambar/left_arrow.png" alt="left arrow">
+                <img src="../gambar/left_arrow.png" alt="left arrow">
                 <h1>Kembali</h1>
             </a>    
         </div>
@@ -30,7 +30,7 @@
 
             <label for="tanggal-toggle" class="tanggal-label">
                 <h1 id="tanggal-terpilih">17 Agustus 2025</h1>
-                <img src="gambar/down_arrow.png" alt="down arrow">
+                <img src="../gambar/down_arrow.png" alt="down arrow">
             </label>
 
             <ul class="dropdown-menu">
@@ -63,10 +63,10 @@
                     <td>
                         <div class="status-icons">
                             <div class="icon-wrapper">
-                                <img src="gambar/time2.png" alt="Menunggu">
+                                <img src="../gambar/time2.png" alt="Menunggu">
                             </div>
                             <div class="icon-wrapper">
-                                <img src="gambar/tick.png" alt="Selesai">
+                                <img src="../gambar/tick.png" alt="Selesai">
                             </div>
                         </div>
                     </td>
@@ -78,10 +78,10 @@
                     <td>
                         <div class="status-icons">
                             <div class="icon-wrapper">
-                                <img src="gambar/time2.png" alt="Menunggu">
+                                <img src="../gambar/time2.png" alt="Menunggu">
                             </div>
                             <div class="icon-wrapper">
-                                <img src="gambar/tick.png" alt="Selesai">
+                                <img src="../gambar/tick.png" alt="Selesai">
                             </div>
                         </div>
                         </div>
@@ -94,10 +94,10 @@
                     <td>
                         <div class="status-icons">
                             <div class="icon-wrapper">
-                                <img src="gambar/time2.png" alt="Menunggu">
+                                <img src="../gambar/time2.png" alt="Menunggu">
                             </div>
                             <div class="icon-wrapper">
-                                <img src="gambar/tick.png" alt="Selesai">
+                                <img src="../gambar/tick.png" alt="Selesai">
                             </div>
                         </div>
                     </td>
@@ -109,10 +109,10 @@
                     <td>
                         <div class="status-icons">
                             <div class="icon-wrapper">
-                                <img src="gambar/time2.png" alt="Menunggu">
+                                <img src="../gambar/time2.png" alt="Menunggu">
                             </div>
                             <div class="icon-wrapper">
-                                <img src="gambar/tick.png" alt="Selesai">
+                                <img src="../gambar/tick.png" alt="Selesai">
                             </div>
                         </div>
                     </td>
@@ -124,10 +124,10 @@
                     <td>
                         <div class="status-icons">
                             <div class="icon-wrapper">
-                                <img src="gambar/time2.png" alt="Menunggu">
+                                <img src="../gambar/time2.png" alt="Menunggu">
                             </div>
                             <div class="icon-wrapper">
-                                <img src="gambar/tick.png" alt="Selesai">
+                                <img src="../gambar/tick.png" alt="Selesai">
                             </div>
                         </div>
                     </td>
@@ -139,10 +139,10 @@
                     <td>
                         <div class="status-icons">
                             <div class="icon-wrapper">
-                                <img src="gambar/time2.png" alt="Menunggu">
+                                <img src="../gambar/time2.png" alt="Menunggu">
                             </div>
                             <div class="icon-wrapper">
-                                <img src="gambar/tick.png" alt="Selesai">
+                                <img src="../gambar/tick.png" alt="Selesai">
                             </div>
                         </div>
                     </td>
@@ -154,10 +154,10 @@
                     <td>
                         <div class="status-icons">
                             <div class="icon-wrapper">
-                                <img src="gambar/time2.png" alt="Menunggu">
+                                <img src="../gambar/time2.png" alt="Menunggu">
                             </div>
                             <div class="icon-wrapper">
-                                <img src="gambar/tick.png" alt="Selesai">
+                                <img src="../gambar/tick.png" alt="Selesai">
                             </div>
                         </div>
                     </td>
@@ -169,10 +169,10 @@
                     <td>
                         <div class="status-icons">
                             <div class="icon-wrapper">
-                                <img src="gambar/time2.png" alt="Menunggu">
+                                <img src="../gambar/time2.png" alt="Menunggu">
                             </div>
                             <div class="icon-wrapper">
-                                <img src="gambar/tick.png" alt="Selesai">
+                                <img src="../gambar/tick.png" alt="Selesai">
                             </div>
                         </div>
                     </td>
@@ -184,10 +184,10 @@
                     <td>
                         <div class="status-icons">
                             <div class="icon-wrapper">
-                                <img src="gambar/time2.png" alt="Menunggu">
+                                <img src="../gambar/time2.png" alt="Menunggu">
                             </div>
                             <div class="icon-wrapper">
-                                <img src="gambar/tick.png" alt="Selesai">
+                                <img src="../gambar/tick.png" alt="Selesai">
                             </div>
                         </div>
                     </td>
@@ -197,6 +197,6 @@
     </div>
 
 
-    <script src="datapemesanan.js"></script>
+    <script src="../js/datapemesanan.js"></script>
 </body>
 </html>
