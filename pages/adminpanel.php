@@ -3,11 +3,11 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
-    <link rel="stylesheet" href="adminpanel.css">
+    <link rel="stylesheet" href="../css/adminpanel.css">
 </head>
 
 <header>
-    <img src="gambar/EEA Red.png" alt="logo">
+    <img src="../gambar/EEA Red.png" alt="logo">
     <div class="navbar">
         <div class="link">
             <a href="home.php"><h4>Home</h4></a>
@@ -31,7 +31,7 @@
                 </div>
 
                 <div class="icon">
-                    <img src="gambar/person_icon.png" alt="person icon">
+                    <img src="../gambar/person_icon.png" alt="person icon">
                 </div>
             </div>
 
@@ -43,7 +43,7 @@
                 </div>
 
                 <div class="icon">
-                    <img src="gambar/time_icon.png" alt="time icon">
+                    <img src="../gambar/time_icon.png" alt="time icon">
                 </div>
             </div>
 
@@ -55,7 +55,7 @@
                 </div>
 
                 <div class="icon">
-                    <img src="gambar/money_icon.png" alt="money">
+                    <img src="../gambar/money_icon.png" alt="money">
                 </div>
             </div>
         </div>
@@ -69,7 +69,7 @@
 
             <div class="table_link">
                 <h4><a href="datapemesanan.php">Selengkapnya</a></h4>
-                <img src="gambar/right_arrow.png" alt="icon arrow">
+                <img src="../gambar/right_arrow.png" alt="icon arrow">
             </div>
         </div>
 

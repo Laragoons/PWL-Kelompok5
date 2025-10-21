@@ -3,11 +3,11 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="../css/login.css">
 </head>
 
 <header>
-    <img src="gambar/EEA Red.png" alt="logo">
+    <img src="../gambar/EEA Red.png" alt="logo">
     <div class="navbar">
         <div class="link">
             <a href="home.php"><h4>Home</h4></a>
@@ -23,12 +23,12 @@
 <body>
     <div class="kotakbesar">
         <div class="gambar">
-        <img src="gambar/gambar login.png" alt="Gambar Voli">
+        <img src="../gambar/gambar login.png" alt="Gambar Voli">
         </div>
         
         <div class="kanan">
             <div class="logo">
-                <img src="gambar/EAA White.png" alt="logo">
+                <img src="../gambar/EAA White.png" alt="logo">
             </div>
 
             <div class="text">

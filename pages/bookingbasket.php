@@ -3,11 +3,11 @@
 <head>    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Booking</title>
-    <link rel="stylesheet" href="bookingfutsal.css"> 
+    <link rel="stylesheet" href="../css/bookingfutsal.css"> 
 </head>
 
 <header>
-    <img src="gambar/EEA Red.png" alt="logo">
+    <img src="../gambar/EEA Red.png" alt="logo">
     <div class="navbar">
         <div class="link">
             <a href="home.php"><h4>Home</h4></a>
@@ -22,10 +22,10 @@
 
 <body>
 <main class="content-container">
-    <h1 class="page-title">Lapangan Futsal</h1>
+    <h1 class="page-title">Lapangan Basket</h1>
 
     <div class="futsal-court-image">
-        <img src="gambar/futsalbooking.png" alt="Lapangan Futsal">
+        <img src="../gambar/basketbooking.png" alt="Lapangan Badminton">
     </div>
 
     <form action="konfirmasi.php" method="POST" class="booking-form">
@@ -114,7 +114,7 @@
         <div class="footeratas">
             <div class="footeratas1">
                 <div class="logofooter">
-                    <img src="gambar/EAA White.png" alt="logo">
+                    <img src="../gambar/EAA White.png" alt="logo">
                 </div>
 
                 <div class="footer1">
@@ -122,9 +122,9 @@
                 </div>
             
                 <div class="medsos">
-                    <img src="gambar/Facebook.png" alt="Facebook">
-                    <img src="gambar/Twitter.png" alt="Twitter">
-                    <img src="gambar/Instagram.png" alt="Instagram">
+                    <img src="../gambar/Facebook.png" alt="Facebook">
+                    <img src="../gambar/Twitter.png" alt="Twitter">
+                    <img src="../gambar/Instagram.png" alt="Instagram">
                 </div>
             </div>
 
