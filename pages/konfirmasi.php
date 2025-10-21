@@ -21,6 +21,31 @@
 </header>
 
 <body>
-    
+    <div class="confirmation-container">
+        <h1>Periksa Pemesanan Anda</h1>
+        <div class="details-box">
+            <div class="details-top">
+                <h3>Lapangan Futsal Sutoyo</h3>
+                <span>Rp 90.000</span>
+            </div>
+            <div class="details-bottom">
+                <p>1 Agustus 2025</p>
+                <p>08.00 - 09.00</p>
+            </div>
+        </div>
+    </div>
+
+<div class="button-group">
+    <button type="submit" id="confirm-booking-button" class="confirm-button">
+        <p>Konfirmasi Pemesanan</p>
+    </button>
+    <a href="home.php" class="cancel-link">
+        <button type="button" class="cancel-button"> 
+            <p>Batalkan</p>
+        </button>
+    </a>
+</div>
+
+<script src="../js/konfirmasi.js"></script>
 </body>
 </html>
