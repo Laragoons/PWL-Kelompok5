@@ -1,7 +1,7 @@
 const images = [
-  "gambar/basket slide.png",
-  "gambar/futsal slide.png",
-  "gambar/Voli Slide.png"
+  "../gambar/basket slide.png",
+  "../gambar/futsal slide.png",
+  "../gambar/Voli Slide.png"
 ];
 
 let index = 0;
