@@ -34,7 +34,24 @@
     </div>    
 </header>
 
+
+
 <body>
+
+    <?php
+    session_start();
+
+    if (isset($_SESSION['success_message'])) {
+        echo '<div style="color: green; padding: 10px; border: 1px solid green; margin: 10px;">' . $_SESSION['success_message'] . '</div>';
+        unset($_SESSION['success_message']);
+    }
+
+    if (isset($_SESSION['error_message'])) {
+        echo '<div style="color: red; padding: 10px; border: 1px solid red; margin: 10px;">' . $_SESSION['error_message'] . '</div>';
+        unset($_SESSION['error_message']);
+    }
+    ?>
+
     <div class="slideshow">
         <img src="../gambar/basket slide.png" alt="basket slideshow" id="slideshow">
     </div>

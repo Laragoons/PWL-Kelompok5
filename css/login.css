@@ -188,4 +188,9 @@ a {
     color: #EFF3FD;
 }
 
-
+.kanan form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}

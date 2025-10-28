@@ -23,7 +23,7 @@
 <body>
     <div class="kotakbesar">
         <div class="gambar">
-        <img src="../gambar/gambar register.png" alt="Gambar futsal">
+            <img src="../gambar/gambar register.png" alt="Gambar futsal">
         </div>
         
         <div class="kanan">
@@ -31,28 +31,28 @@
                 <img src="../gambar/EAA White.png" alt="logo">
             </div>
 
-            <div class="text">
-                <div class="email">
-                    <h3>Email Address</h3>
-                    <input type="email">
+            <form action="../db-pages/register_process.php" method="POST"> 
+                <div class="text">
+                    <div class="email">
+                        <h3>Email Address</h3>
+                        <input type="email" name="email" required> 
+                    </div>
+
+                    <div class="password">
+                        <h3>Password</h3>
+                        <input type="password" name="password" required>
+                    </div>
+
+                    <div class="confirm">
+                        <h3>Confirm Password</h3>
+                        <input type="password" name="confirm_password" required>
+                    </div>
                 </div>
 
-                <div class="password">
-                    <h3>Password</h3>
-                    <input type="password">
+                <div class="tombol">
+                    <button type="submit">Sign Up</button> 
                 </div>
-
-                <div class="confirm">
-                <h3>Confirm Password</h3>
-                <input type="password">
-                </div>
-            </div>
-
-            <div class="tombol">
-                <a href="home.php"><button>Sign Up</button></a>
-            </div>
-
-            <div class="tulisan">
+            </form> <div class="tulisan">
                 <div class="teks_satu"><p>Already signed up?</p></div>
                 <div class="teks_dua"><a href="login.php"><p>Log In.</p></a></div>
             </div>
