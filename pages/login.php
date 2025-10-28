@@ -23,7 +23,7 @@
 <body>
     <div class="kotakbesar">
         <div class="gambar">
-        <img src="../gambar/gambar login.png" alt="Gambar Voli">
+            <img src="../gambar/gambar login.png" alt="Gambar Voli">
         </div>
         
         <div class="kanan">
@@ -31,23 +31,23 @@
                 <img src="../gambar/EAA White.png" alt="logo">
             </div>
 
-            <div class="text">
-                <div class="email">
-                    <h3>Email Address</h3>
-                    <input type="email">
+            <form action="../db-pages/login_process.php" method="POST"> 
+                <div class="text">
+                    <div class="email">
+                        <h3>Email Address</h3>
+                        <input type="email" name="email" required> 
+                    </div>
+
+                    <div class="password">
+                        <h3>Password</h3>
+                        <input type="password" name="password" required>
+                    </div>
                 </div>
 
-                <div class="password">
-                    <h3>Password</h3>
-                    <input type="password">
+                <div class="tombol">
+                    <button type="submit">Log In</button> 
                 </div>
-            </div>
-
-            <div class="tombol">
-                <a href="home.php"><button>Log In</button></a>
-            </div>
-
-            <div class="tulisan">
+            </form> <div class="tulisan">
                 <div class="teks_satu"><p>Not signed up?</p></div>
                 <div class="teks_dua"><a href="register.php"><p>Create an account.</p></a></div>
             </div>
