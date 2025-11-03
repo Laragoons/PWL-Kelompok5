@@ -1,3 +1,48 @@
+<?php
+include '../config/db-connection.php'; 
+
+$court_id = 1;
+
+$default_date_str = "1 September 2025"; 
+
+$tanggal_booking = date('Y-m-d', strtotime($default_date_str)); 
+
+$available_hours = [];
+for ($i = 7; $i <= 23; $i++) {
+    $available_hours[] = sprintf('%02d:00', $i);
+}
+$available_hours[] = '00:00'; 
+
+$booked_hours = [];
+
+$query = "SELECT start_time, end_time FROM bookings 
+          WHERE court_id = $court_id AND booking_date = '$tanggal_booking'";
+
+$result = mysqli_query($connection, $query);
+
+if ($result) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $start_time = strtotime($row['start_time']);
+        $end_time = strtotime($row['end_time']);
+        
+        $current_time = $start_time;
+        
+        while ($current_time <= $end_time) {
+            $hour_str = date('H:i', $current_time);
+            
+            if (in_array($hour_str, $available_hours)) {
+                 $booked_hours[$hour_str] = true;
+            }
+            
+            $current_time = strtotime('+1 hour', $current_time);
+            
+            if ($current_time > strtotime('+24 hour', $start_time)) break;
+        }
+    }
+}
+
+mysqli_close($connection);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +63,7 @@
 
         <div class="login">
             <a href="login.php"><h4>Log in</h4></a>
-        </div>  
+        </div> 
     </div>    
 </header>
 
@@ -40,7 +85,7 @@
 
                 <div class="keterangan2 date-dropdown-container">
                     <div class="date-trigger" id="date-dropdown-toggle">
-                        <h3 id="selected-date">1 September 2025</h3>
+                        <h3 id="selected-date"><?php echo htmlspecialchars($default_date_str); ?></h3>
                         <img src="../gambar/iconbawah.png" alt="icon dropdown">
                     </div>
                     <ul class="date-dropdown-list" id="date-options">
@@ -64,24 +109,15 @@
             </div>
 
             <div class="jam">
-                <div class="terpesan">07.00</div>
-                <div class="terpesan">08.00</div>
-                <div class="terpesan">09.00</div>
-                <div class="terpesan">10.00</div>
-                <div class="terpesan">11.00</div>
-                <div class="tersedia">12.00</div>
-                <div class="tersedia">13.00</div>
-                <div class="tersedia">14.00</div>
-                <div class="tersedia">15.00</div>
-                <div class="tersedia">16.00</div>
-                <div class="tersedia">17.00</div>
-                <div class="tersedia">18.00</div>
-                <div class="tersedia">19.00</div>
-                <div class="tersedia">20.00</div>
-                <div class="tersedia">21.00</div>
-                <div class="tersedia">22.00</div>
-                <div class="tersedia">23.00</div>
-                <div class="tersedia">00.00</div>
+                <?php 
+                foreach ($available_hours as $hour) {
+                    $display_time = substr($hour, 0, 5); 
+                    
+                    $class = isset($booked_hours[$display_time]) ? 'terpesan' : 'tersedia';
+                    
+                    echo "<div class=\"$class\">$display_time</div>";
+                }
+                ?>
             </div>
 
             <hr class="jam-divider">
