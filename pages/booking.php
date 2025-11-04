@@ -1,18 +1,45 @@
 <?php
 session_start();
+require_once '../config/db-connection.php';
 
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
 }
-?>
 
+$court_id = isset($_GET['id']) ? (int)$_GET['id'] : 1;
+
+$courts_images = [
+    1 => '../gambar/futsalbooking.png',
+    2 => '../gambar/basketbooking.png',
+    3 => '../gambar/badminbooking.png',
+    4 => '../gambar/volibooking.png'
+];
+
+$court_name = "Tidak Ditemukan";
+
+$sql_details = "SELECT name FROM courts WHERE id = ?";
+$stmt_details = mysqli_prepare($connection, $sql_details);
+if ($stmt_details) {
+    mysqli_stmt_bind_param($stmt_details, "i", $court_id);
+    mysqli_stmt_execute($stmt_details);
+    $result_details = mysqli_stmt_get_result($stmt_details);
+    if ($court_data = mysqli_fetch_assoc($result_details)) {
+        $court_name = htmlspecialchars($court_data['name']);
+    }
+    mysqli_stmt_close($stmt_details);
+}
+
+$court_image = $courts_images[$court_id] ?? $courts_images[1];
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Booking Lapangan Futsal</title>
-    <link rel="stylesheet" href="../css/bookingfutsal.css">
+    <title>Booking Lapangan <?php echo $court_name; ?></title>
+    <link rel="stylesheet" href="../css/booking.css">
+    <link rel="stylesheet" href="../css/home.css">
 </head>
 
 <header>
@@ -20,11 +47,33 @@ if (!isset($_SESSION['user_id'])) {
     <div class="navbar">
         <div class="link">
             <a href="home.php"><h4>Home</h4></a>
-            <a href="jadwal.php"><h4>Jadwal Lapangan</h4></a>
-            <div class="garis"></div>
-            <a href="register.php"><h4>Register</h4></a>
+            <div class="dropdown"> 
+                <a href="#" class="dropdown-toggle"> 
+                    <h4>Jadwal Lapangan</h4>
+                </a>
+                <ul class="dropdown-menu"> 
+                    <li><a href="jadwal.php?id=1">Jadwal Futsal</a></li>
+                    <li><a href="jadwal.php?id=2">Jadwal Basket</a></li>
+                    <li><a href="jadwal.php?id=3">Jadwal Badminton</a></li>
+                    <li><a href="jadwal.php?id=4">Jadwal Voli</a></li>
+                </ul>
+            </div>
+
+            <?php if (!isset($_SESSION['user_id'])): ?>
+                <div class="garis"></div>
+                <a href="register.php"><h4>Register</h4></a>
+            <?php endif; ?>
         </div>
-        <div class="login"><a href="login.php"><h4>Log in</h4></a></div>
+        
+        <?php if (!isset($_SESSION['user_id'])): ?>
+            <div class="login">
+                <a href="login.php"><h4>Log in</h4></a>
+            </div>
+        <?php else: ?>
+            <div class="login"> 
+                <a href="../db-pages/logout.php"><h4>Logout</h4></a> 
+            </div>
+        <?php endif; ?>
     </div>
 </header>
 
@@ -37,15 +86,17 @@ if (!isset($_SESSION['user_id'])) {
     ?>
 
     <main class="content-container">
-        <h1 class="page-title">Lapangan Futsal</h1>
+        <h1 class="page-title">Lapangan <?php echo $court_name; ?></h1>
 
         <div class="futsal-court-image">
-            <img src="../gambar/futsalbooking.png" alt="Lapangan Futsal">
+            <img src="<?php echo $court_image; ?>" alt="Lapangan <?php echo $court_name; ?>">
         </div>
 
         <form action="konfirmasi.php" method="POST" class="booking-form">
 
-            <input type="hidden" name="court_id" value="1"> <div class="form-row">
+            <input type="hidden" name="court_id" value="<?php echo $court_id; ?>">
+            
+            <div class="form-row">
                 <div class="form-group time-group">
                     <label for="jam_mulai">Jam Mulai:</label>
                     <select id="jam_mulai" name="jam_mulai" required>
@@ -98,24 +149,9 @@ if (!isset($_SESSION['user_id'])) {
             </div>
 
             <div class="form-row">
-                <div class="form-group">
+                <div class="form-group date-group">
                     <label for="tanggal_pemesanan">Tanggal Pemesanan:</label>
                     <input type="date" id="tanggal_pemesanan" name="tanggal_pemesanan" min="2025-09-01" max="2025-09-07" required>
-                </div>
-                <div class="form-group">
-                    <label for="nama_pemesan">Nama Pemesan:</label>
-                    <input type="text" id="nama_pemesan" name="nama_pemesan" required>
-                </div>
-                <div class="form-group">
-                    <label for="nomor_wa">Nomor WA Pemesan:</label>
-                    <div class="input-group">
-                        <span class="input-group-text">+62</span>
-                        <input type="tel" id="nomor_wa" name="nomor_wa" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="email_pemesan">Email Pemesan</label>
-                    <input type="email" id="email_pemesan" name="email_pemesan">
                 </div>
             </div>
 
@@ -158,5 +194,6 @@ if (!isset($_SESSION['user_id'])) {
         </div>
     </footer>
 
+    <script src="../js/home.js"></script>
 </body>
 </html>
