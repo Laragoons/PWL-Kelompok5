@@ -6,23 +6,10 @@ $court_id = isset($_POST['court_id']) ? (int)$_POST['court_id'] : 0;
 $jam_mulai = isset($_POST['jam_mulai']) ? $_POST['jam_mulai'] : null;
 $jam_selesai = isset($_POST['jam_selesai']) ? $_POST['jam_selesai'] : null;
 $tanggal_pemesanan = isset($_POST['tanggal_pemesanan']) ? $_POST['tanggal_pemesanan'] : null;
-$nama_pemesan = isset($_POST['nama_pemesan']) ? trim($_POST['nama_pemesan']) : null;
-$nomor_wa = isset($_POST['nomor_wa']) ? trim($_POST['nomor_wa']) : null;
-$email_pemesan = isset($_POST['email_pemesan']) ? trim($_POST['email_pemesan']) : null;
 $total_harga = isset($_POST['total_harga']) ? (float)$_POST['total_harga'] : 0;
 $user_id = isset($_SESSION['user_id']) ? (int)$_SESSION['user_id'] : null;
 
-if ($user_id !== null && !empty($email_pemesan)) {
-    $email_session = isset($_SESSION['user_email']) ? $_SESSION['user_email'] : null;
-
-    if ($email_session !== null && $email_pemesan !== $email_session) {
-        $_SESSION['error_message'] = "Email yang dimasukkan tidak sesuai dengan email akun Anda.";
-        header("Location: ../pages/bookingfutsal.php");
-        exit();
-    }
-}
-
-if ($court_id <= 0 || !$jam_mulai || !$jam_selesai || !$tanggal_pemesanan || empty($nama_pemesan) || empty($nomor_wa)) {
+if ($court_id <= 0 || !$jam_mulai || !$jam_selesai || !$tanggal_pemesanan || $user_id === null) {
     $_SESSION['error_message'] = "Data pemesanan tidak lengkap atau tidak valid.";
     header("Location: ../pages/bookingfutsal.php");
     exit();
@@ -86,8 +73,8 @@ if ($stmt_check) {
     exit();
 }
 
-$sql = "INSERT INTO bookings (user_id, court_id, booking_date, start_time, end_time, total_price, customer_name, customer_phone, customer_email, status)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+$sql = "INSERT INTO bookings (user_id, court_id, booking_date, start_time, end_time, total_price, status)
+        VALUES (?, ?, ?, ?, ?, ?, ?)";
 
 $stmt = mysqli_prepare($connection, $sql);
 
@@ -95,16 +82,13 @@ if ($stmt) {
     $status_default = 'Belum Diproses';
     mysqli_stmt_bind_param(
         $stmt,
-        "iisssdssss",
+        "iisssds",
         $user_id,
         $court_id,
         $tanggal_pemesanan,
         $jam_mulai,
         $jam_selesai,
         $total_harga,
-        $nama_pemesan,
-        $nomor_wa,
-        $email_pemesan,
         $status_default
     );
 

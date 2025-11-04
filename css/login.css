@@ -130,6 +130,9 @@ a {
     background-color: #EFF3FD;
     border-radius: 10px;
     border: none;
+    padding-left: 15px;
+    padding-right: 15px;
+    box-sizing: border-box;
 }
 
 .email{

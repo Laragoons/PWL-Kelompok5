@@ -291,3 +291,8 @@ footer hr{
     display: flex;
     gap: 675px;
 }
+
+.date-group {
+    flex: none;
+    width: 300px;
+}
