@@ -185,7 +185,7 @@ mysqli_close($connection);
 
             <div class="keteranganbawah">
                 <h3>Lapangan <?php echo $court_name; ?> <?php echo $court_location; ?></h3>
-                <a href="<?php echo $booking_page_link; ?>" class="booking-button">Booking</a>
+                <a href="booking.php?id=<?php echo $court_id; ?>" class="booking-button">Booking</a>
             </div>
         </div>
     </div>
