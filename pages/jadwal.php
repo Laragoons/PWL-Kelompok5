@@ -123,12 +123,21 @@ mysqli_close($connection);
                 </ul>
             </div>
 
-            <div class="garis"></div>
-            <a href="register.php"><h4>Register</h4></a>
+            <?php if (!isset($_SESSION['user_id'])): ?>
+                <div class="garis"></div>
+                <a href="register.php"><h4>Register</h4></a>
+            <?php endif; ?>
         </div>
-        <div class="login">
-            <a href="login.php"><h4>Log in</h4></a>
-        </div> 
+        
+        <?php if (!isset($_SESSION['user_id'])): ?>
+            <div class="login">
+                <a href="login.php"><h4>Log in</h4></a>
+            </div>
+        <?php else: ?>
+            <div class="login"> 
+                <a href="../db-pages/logout.php"><h4>Logout</h4></a> 
+            </div>
+        <?php endif; ?>
     </div>    
 </header>
 

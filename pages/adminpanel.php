@@ -2,12 +2,10 @@
 session_start();
 require_once '../config/db-connection.php';
 
-/*
 if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] != 'admin') {
     header("Location: login.php");
     exit();
 }
-*/
 
 function getDashboardData($conn, $period) {
     $date_condition = "";
@@ -68,6 +66,7 @@ if ($result_table) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
     <link rel="stylesheet" href="../css/adminpanel.css">
+    <link rel="stylesheet" href="../css/home.css"> 
 </head>
 
 <header>
@@ -75,8 +74,23 @@ if ($result_table) {
     <div class="navbar">
         <div class="link">
             <a href="home.php"><h4>Home</h4></a>
-            <a href="jadwal.php"><h4>Jadwal Lapangan</h4></a>
-        </div> 
+            <div class="dropdown"> 
+                <a href="#" class="dropdown-toggle"> 
+                    <h4>Jadwal Lapangan</h4>
+                </a>
+                <ul class="dropdown-menu"> 
+                    <li><a href="jadwal.php?id=1">Jadwal Futsal</a></li>
+                    <li><a href="jadwal.php?id=2">Jadwal Basket</a></li>
+                    <li><a href="jadwal.php?id=3">Jadwal Badminton</a></li>
+                    <li><a href="jadwal.php?id=4">Jadwal Voli</a></li>
+                </ul>
+            </div>
+            
+        </div>
+        
+        <div class="login">
+            <a href="../db-pages/logout.php"><h4>Log out</h4></a>
+        </div>
     </div>    
 </header>
 
@@ -178,5 +192,7 @@ if ($result_table) {
             </table>
         </div>
     </div>
+    
+    <script src="../js/home.js"></script> 
 </body>
 </html>

@@ -2,10 +2,10 @@
 session_start();
 require_once '../config/db-connection.php';
 
-// if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] != 'admin') {
-//     header("Location: login.php");
-//     exit();
-// }
+if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] != 'admin') {
+    header("Location: login.php");
+    exit();
+}
 
 $valid_dates = [];
 $base_date = '2025-09-01';
@@ -45,6 +45,7 @@ mysqli_close($connection);
     <link rel="stylesheet" href="../css/datapemesanan.css">
     <link rel="stylesheet" href="../css/adminpanel.css">
     <link rel="stylesheet" href="../css/date-dropdown.css">
+    <link rel="stylesheet" href="../css/home.css">
 </head>
 
 <header>
@@ -52,8 +53,22 @@ mysqli_close($connection);
     <div class="navbar">
         <div class="link">
             <a href="home.php"><h4>Home</h4></a>
-            <a href="jadwal.php"><h4>Jadwal Lapangan</h4></a>
-        </div> 
+            <div class="dropdown"> 
+                <a href="#" class="dropdown-toggle"> 
+                    <h4>Jadwal Lapangan</h4>
+                </a>
+                <ul class="dropdown-menu"> 
+                    <li><a href="jadwal.php?id=1">Jadwal Futsal</a></li>
+                    <li><a href="jadwal.php?id=2">Jadwal Basket</a></li>
+                    <li><a href="jadwal.php?id=3">Jadwal Badminton</a></li>
+                    <li><a href="jadwal.php?id=4">Jadwal Voli</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="login">
+            <a href="../db-pages/logout.php"><h4>Log out</h4></a>
+        </div>
     </div>    
 </header>
 
@@ -69,7 +84,7 @@ mysqli_close($connection);
         <div class="tanggal date-dropdown-container">
             <div class="date-trigger" id="date-dropdown-toggle">
                 <h1 id="selected-date"><?php echo htmlspecialchars($tanggal_tampil); ?></h1>
-                <img src="../gambar/down_arrow.png" alt="down arrow">
+                <img src="../gambar/down_arrow.png" alt="icon dropdown">
             </div>
             <ul class="date-dropdown-list" id="date-options">
                 <?php
@@ -120,5 +135,6 @@ mysqli_close($connection);
     </div>
 
     <script src="../js/jadwal.js"></script> 
+    <script src="../js/home.js"></script> 
 </body>
 </html>

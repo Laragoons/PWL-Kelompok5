@@ -1,6 +1,9 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
-<head>    
+<head> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="../css/home.css"> 
@@ -24,20 +27,24 @@
                 </ul>
             </div>
 
-            <div class="garis"></div>
-            <a href="register.php"><h4>Register</h4></a>
+            <?php if (!isset($_SESSION['user_id'])): ?>
+                <div class="garis"></div>
+                <a href="register.php"><h4>Register</h4></a>
+            <?php endif; ?>
         </div>
-        <div class="login">
-            <a href="login.php"><h4>Log in</h4></a>
-        </div> 
-    </div>    
+        
+        <?php if (!isset($_SESSION['user_id'])): ?>
+            <div class="login">
+                <a href="login.php"><h4>Log in</h4></a>
+            </div>
+        <?php else: ?>
+            <div class="login">
+                <a href="../db-pages/logout.php"><h4>Log out</h4></a>
+            </div>
+        <?php endif; ?>
+    </div> 	
 </header>
 
-
-
-<?php
-session_start();
-?>
 <body>
 
     <?php
@@ -113,11 +120,39 @@ session_start();
         </div>
     </div>
 
-
     <footer>
-        </footer>
+        <div class="footeratas">
+            <div class="footeratas1">
+                <div class="logofooter">
+                    <img src="../gambar/EAA White.png" alt="logo">
+                </div>
+                <div class="footer1">
+                    <p>Our vision is to provide the best court service for you.</p>
+                </div>
+                <div class="medsos">
+                    <img src="../gambar/Facebook.png" alt="Facebook">
+                    <img src="../gambar/Twitter.png" alt="Twitter">
+                    <img src="../gambar/Instagram.png" alt="Instagram">
+                </div>
+            </div>
+            <div class="footeratas2">
+                <div class="social">
+                    <h3>Socials</h3>
+                    <p>Discord</p>
+                    <p>Instagram</p>
+                    <p>Twitter</p>
+                    <p>Facebook</p>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="footerbawah">
+            <div class="footerbawah1">
+                <p>©2022 EAASPORTSTIME. All rights reserved</p>
+            </div>
+        </div>   
+    </footer>
 
     <script src="../js/home.js"></script>
 </body>
 </html>
-
