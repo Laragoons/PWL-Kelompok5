@@ -141,7 +141,6 @@ a {
 body {
     font-family: Arial, sans-serif;
     background-color: #f8f9fa;
-    margin: 20px;
     color: #444;
 }
 
@@ -208,4 +207,59 @@ tbody tr:last-child td {
     height: 25px;
     cursor: pointer;
     object-fit: contain;
+}
+
+.icon-wrapper {
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.icon-wrapper:hover {
+    transform: scale(1.1);
+    opacity: 0.8;
+}
+
+.date-dropdown-container {
+    position: relative;
+    display: inline-block;
+}
+
+.date-trigger {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.date-dropdown-list {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+    border-radius: 4px;
+    padding: 5px 0;
+    margin: 5px 0 0 0;
+    list-style: none;
+    min-width: 180px;
+    z-index: 100;
+}
+
+.date-dropdown-list.show {
+    display: block;
+}
+
+.date-dropdown-list li a {
+    display: block;
+    padding: 8px 15px;
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.date-dropdown-list li a:hover {
+    background-color: #f0f0f0;
+    color: #911E25;
 }
