@@ -163,17 +163,15 @@ th {
     color: #911E25;
     text-align: center;
     padding: 20px 20px;
-    border-bottom: 2px solid #f0f0f0;
+    border-bottom: none;
     font-size: 24px;
     font-weight: bold;
 }
 
-td {
-    padding: 18px 20px;
-    border-bottom: 1px solid #f0f0f0;
-    vertical-align: middle;
-    font-size: 18px;
-    text-align: center;
+.table-container th {
+    color: #911E25 !important;
+    background-color: #fff !important;
+    border-bottom: none !important;
 }
 
 tbody tr:last-child td {
@@ -262,4 +260,9 @@ tbody tr:last-child td {
 .date-dropdown-list li a:hover {
     background-color: #f0f0f0;
     color: #911E25;
+}
+
+.table-container th {
+    color: #911E25 !important;
+    background-color: #fff !important;
 }
