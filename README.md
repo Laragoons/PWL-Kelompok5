@@ -1,13 +1,17 @@
 <h1>EAA Sportstime</h1>
 <p> EEA Sportstime adalah sebuah website yang dikembangkan untuk menyelesaikan berbagai permasalahan yang ada saat memesan lapangan olahraga, website ini mempermudah pemesanan berbagai lapangan olahraga dengan memberikan kemudahan bagi pengguna yang ingin memesan lapangan dengan efisien secara online. Kami menyediakan 4 jenis lapangan olahraga yaitu badminton, voli, futsal dan basket. </p>
 
-<h2>Instalasi</h2>
-<p><b>1. Clone Repository</b><p>
-<p>git clone https://github.com/Laragoons/PWL-Kelompok5.git</p>
-<p><b>2. Siapkan Server Lokal</b></p>
-<p>Siapkan server lokal seperti Laragon dan pindahkan folder project</p>
-<p><b>3. Jalankan Server lokal</b></p>
-<p>Jalankan MySQL</p>
+<h2>Instalasi Projek dan Set-Up Database</h2>
+<p><b>1. Download File MySql</b><p>
+<p> Tekan file eaa_sports.sql yang ada di git hub repository dan download.</p>
+<p><b>2. Masuk ke Database</b><p>
+<p> Masuk ke database lewat Laragon, setelah itu isi username dengan root dan kosongkan password.</p>
+<p><b>3. Menambahkan Database</b><p>
+<p> Tekan tombol "New" dan masukkan nama database yaitu eaa_sports, setelah itu tekan "Create".</p>
+<p><b>4. Import File MySql</b></p>
+<p> Tekan tombol "Import" dan masukkan file MySql yang sudah didownload dan tekan tombol "Import" yang ada di bawah.</p>
+<p><b>5. Git Clone/b></p>
+<p> </p>
 
 <h2>Cara Penggunaan</h2>
 <p><b>Pengguna</b><p>
