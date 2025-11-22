@@ -33,4 +33,3 @@ if ($stmt) {
 }
 
 mysqli_close($connection);
-?>

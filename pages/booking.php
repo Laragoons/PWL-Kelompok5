@@ -1,5 +1,6 @@
 <?php
 session_start();
+date_default_timezone_set('Asia/Jakarta');
 require_once '../config/db-connection.php';
 
 if (!isset($_SESSION['user_id'])) {
@@ -32,6 +33,8 @@ if ($stmt_details) {
 
 $court_image = $courts_images[$court_id] ?? $courts_images[1];
 
+$min_date = date('Y-m-d');
+$max_date = date('Y-m-d', strtotime('+6 days'));
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -151,7 +154,7 @@ $court_image = $courts_images[$court_id] ?? $courts_images[1];
             <div class="form-row">
                 <div class="form-group date-group">
                     <label for="tanggal_pemesanan">Tanggal Pemesanan:</label>
-                    <input type="date" id="tanggal_pemesanan" name="tanggal_pemesanan" min="2025-09-01" max="2025-09-07" required>
+                    <input type="date" id="tanggal_pemesanan" name="tanggal_pemesanan" min="<?php echo $min_date; ?>" max="<?php echo $max_date; ?>" value="<?php echo $min_date; ?>" required>
                 </div>
             </div>
 

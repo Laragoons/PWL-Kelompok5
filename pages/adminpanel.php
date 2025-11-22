@@ -1,5 +1,6 @@
 <?php
 session_start();
+date_default_timezone_set('Asia/Jakarta');
 require_once '../config/db-connection.php';
 
 if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] != 'admin') {
@@ -7,33 +8,53 @@ if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] != 'admin') {
     exit();
 }
 
+function executeQuery($conn, $sql) {
+    $result = mysqli_query($conn, $sql);
+    if (!$result) {
+        return null;
+    }
+    return $result;
+}
+
 function getDashboardData($conn, $period) {
+    $today = date('Y-m-d');
     $date_condition = "";
+
     if ($period == 'today') {
-        $date_condition = "booking_date = '2025-09-01'";
+        $date_condition = "DATE(booking_date) = '$today'";
     } elseif ($period == 'week') {
-        $date_condition = "booking_date BETWEEN '2025-09-01' AND '2025-09-07'";
+        $start_date = $today;
+        $end_date = date('Y-m-d', strtotime('+6 days'));
+        $date_condition = "DATE(booking_date) BETWEEN '$start_date' AND '$end_date'";
+    } else {
+        $date_condition = "1=1"; 
     }
 
     $sql_count = "SELECT COUNT(*) as total FROM bookings WHERE $date_condition";
-    $res_count = mysqli_query($conn, $sql_count);
-    $data_count = mysqli_fetch_assoc($res_count);
-    $total_penyewa = $data_count['total'] ?? 0;
+    $res_count = executeQuery($conn, $sql_count);
+    $data_count = ($res_count) ? mysqli_fetch_assoc($res_count) : ['total' => 0];
+    $total_penyewa = $data_count['total'];
 
     $sql_hours = "SELECT SUM(
-                    CASE
-                        WHEN end_time <= start_time THEN TIME_TO_SEC(TIMEDIFF(ADDTIME(end_time, '24:00:00'), start_time)) / 3600
-                        ELSE TIME_TO_SEC(TIMEDIFF(end_time, start_time)) / 3600
+                    CASE 
+                        WHEN CAST(end_time AS TIME) <= CAST(start_time AS TIME) AND end_time != '00:00' 
+                        THEN TIME_TO_SEC(TIMEDIFF(ADDTIME(CAST(end_time AS TIME), '24:00:00'), CAST(start_time AS TIME))) / 3600
+                        
+                        WHEN end_time = '00:00'
+                        THEN TIME_TO_SEC(TIMEDIFF('24:00:00', CAST(start_time AS TIME))) / 3600
+
+                        ELSE TIME_TO_SEC(TIMEDIFF(CAST(end_time AS TIME), CAST(start_time AS TIME))) / 3600
                     END
                   ) as total_hours 
                   FROM bookings WHERE $date_condition";
-    $res_hours = mysqli_query($conn, $sql_hours);
-    $data_hours = mysqli_fetch_assoc($res_hours);
+                  
+    $res_hours = executeQuery($conn, $sql_hours);
+    $data_hours = ($res_hours) ? mysqli_fetch_assoc($res_hours) : ['total_hours' => 0];
     $total_hours = $data_hours['total_hours'] ? round($data_hours['total_hours']) : 0;
 
     $sql_income = "SELECT SUM(total_price) as total_income FROM bookings WHERE $date_condition";
-    $res_income = mysqli_query($conn, $sql_income);
-    $data_income = mysqli_fetch_assoc($res_income);
+    $res_income = executeQuery($conn, $sql_income);
+    $data_income = ($res_income) ? mysqli_fetch_assoc($res_income) : ['total_income' => 0];
     $total_income = $data_income['total_income'] ?? 0;
 
     return [
@@ -51,9 +72,9 @@ $sql_table = "SELECT b.id, u.email, c.name AS lapangan, b.booking_date, b.status
               FROM bookings b
               LEFT JOIN users u ON b.user_id = u.id
               JOIN courts c ON b.court_id = c.id
-              ORDER BY b.id DESC LIMIT 10";
+              ORDER BY b.booking_date DESC, b.start_time DESC LIMIT 10";
 
-$result_table = mysqli_query($connection, $sql_table);
+$result_table = executeQuery($connection, $sql_table);
 if ($result_table) {
     while ($row = mysqli_fetch_assoc($result_table)) {
         $bookings[] = $row;
@@ -98,6 +119,9 @@ if ($result_table) {
     <div class="dashboard">
         <div class="dashboard_title">
             <h1>Dashboard</h1>
+            <p style="color: #666; font-size: 14px; margin-top: 5px;">
+                Tanggal Hari Ini: <?php echo date('d F Y'); ?>
+            </p>
         </div>
 
         <div class="dashboard_box">
@@ -162,7 +186,7 @@ if ($result_table) {
                 <tbody>
                     <?php if (empty($bookings)): ?>
                         <tr>
-                            <td colspan="5">Belum ada pemesanan terbaru.</td>
+                            <td colspan="5" style="text-align:center; padding: 20px;">Belum ada data pemesanan di database.</td>
                         </tr>
                     <?php else: ?>
                         <?php foreach ($bookings as $row): ?>
@@ -177,7 +201,7 @@ if ($result_table) {
                                 $tgl = date('d F Y', strtotime($row['booking_date']));
                                 $jam = substr($row['start_time'], 0, 5) . ' - ' . substr($row['end_time'], 0, 5);
                                 
-                                $penyewa = $row['email'];
+                                $penyewa = $row['email'] ?? 'User tidak ditemukan';
                             ?>
                             <tr>
                                 <td><span class="dot <?php echo $status_class; ?>"></span><?php echo htmlspecialchars($penyewa); ?></td>

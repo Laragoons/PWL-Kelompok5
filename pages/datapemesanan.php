@@ -1,5 +1,6 @@
 <?php
 session_start();
+date_default_timezone_set('Asia/Jakarta');
 require_once '../config/db-connection.php';
 
 if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] != 'admin') {
@@ -7,22 +8,22 @@ if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] != 'admin') {
     exit();
 }
 
-$valid_dates = [];
-$base_date = '2025-09-01';
-for ($i = 0; $i < 7; $i++) {
-    $date_sql = date('Y-m-d', strtotime("$base_date +$i days"));
-    $date_display = date('j F Y', strtotime($date_sql));
-    $valid_dates[$date_sql] = $date_display;
+$today_date = date('Y-m-d');
+
+$tanggal_sql = isset($_GET['tanggal']) && !empty($_GET['tanggal']) ? $_GET['tanggal'] : $today_date;
+
+$tanggal_tampil = date('j F Y', strtotime($tanggal_sql));
+if ($tanggal_sql == $today_date) {
+    $tanggal_tampil .= ' (Hari Ini)';
 }
-$tanggal_sql = isset($_GET['tanggal']) && isset($valid_dates[$_GET['tanggal']]) ? $_GET['tanggal'] : $base_date;
-$tanggal_tampil = $valid_dates[$tanggal_sql];
 
 $bookings = [];
-$sql = "SELECT b.id, u.email AS pelanggan_email, c.name AS lapangan_nama, b.start_time, b.end_time 
+
+$sql = "SELECT b.id, u.email AS pelanggan_email, c.name AS lapangan_nama, b.start_time, b.end_time, b.status
         FROM bookings b
         JOIN users u ON b.user_id = u.id
         JOIN courts c ON b.court_id = c.id
-        WHERE b.booking_date = ? AND b.status = 'Belum Diproses'
+        WHERE b.booking_date = ? AND b.status IN ('Belum Diproses', 'Diproses')
         ORDER BY b.start_time ASC";
 
 $stmt = mysqli_prepare($connection, $sql);
@@ -44,7 +45,6 @@ mysqli_close($connection);
     <title>Data Pemesanan</title>
     <link rel="stylesheet" href="../css/datapemesanan.css">
     <link rel="stylesheet" href="../css/adminpanel.css">
-    <link rel="stylesheet" href="../css/date-dropdown.css">
     <link rel="stylesheet" href="../css/home.css">
 </head>
 
@@ -80,19 +80,21 @@ mysqli_close($connection);
                 <h1>Kembali</h1>
             </a>    
         </div>
-
+        
         <div class="tanggal date-dropdown-container">
             <div class="date-trigger" id="date-dropdown-toggle">
-                <h1 id="selected-date"><?php echo htmlspecialchars($tanggal_tampil); ?></h1>
+                <h1 id="selected-date" style="display: block;"><?php echo htmlspecialchars($tanggal_tampil); ?></h1>
+                
+                <input 
+                    type="date" 
+                    id="date-input-field" 
+                    value="<?php echo htmlspecialchars($tanggal_sql); ?>" 
+                    style="display: none;" 
+                    onchange="window.location.href='datapemesanan.php?tanggal=' + this.value"
+                >
+                
                 <img src="../gambar/down_arrow.png" alt="icon dropdown">
             </div>
-            <ul class="date-dropdown-list" id="date-options">
-                <?php
-                foreach ($valid_dates as $sql_date => $display_date) {
-                    echo "<li><a href='datapemesanan.php?tanggal=$sql_date' data-date='$display_date'>$display_date</a></li>";
-                }
-                ?>
-            </ul>
         </div>
     </div>
 
@@ -109,7 +111,7 @@ mysqli_close($connection);
             <tbody>
                 <?php if (empty($bookings)): ?>
                     <tr>
-                        <td colspan="4">Tidak ada pemesanan yang perlu diproses untuk tanggal ini.</td>
+                        <td colspan="4" style="text-align:center;">Tidak ada pemesanan yang perlu diproses atau sedang diproses untuk tanggal ini.</td>
                     </tr>
                 <?php else: ?>
                     <?php foreach ($bookings as $booking): ?>
@@ -118,13 +120,16 @@ mysqli_close($connection);
                             <td><?php echo htmlspecialchars($booking['lapangan_nama']); ?></td>
                             <td><?php echo substr($booking['start_time'], 0, 5) . '-' . substr($booking['end_time'], 0, 5); ?></td>
                             <td>
-                                <div class="status-icons">
-                                    <a href="../db-pages/update_status.php?id=<?php echo $booking['id']; ?>&status=Diproses&redirect_date=<?php echo $tanggal_sql; ?>" class="icon-wrapper icon-proses">
-                                        <img src="../gambar/time2.png" alt="Proses">
-                                    </a>
-                                    <a href="../db-pages/update_status.php?id=<?php echo $booking['id']; ?>&status=Sudah Diproses&redirect_date=<?php echo $tanggal_sql; ?>" class="icon-wrapper icon-selesai">
-                                        <img src="../gambar/tick.png" alt="Selesai">
-                                    </a>
+                                <div class="status-content">
+                                    <p class="current-status-text">(<?php echo htmlspecialchars($booking['status']); ?>)</p>
+                                    <div class="status-icons">
+                                        <a href="../db-pages/update_status.php?id=<?php echo $booking['id']; ?>&status=Diproses&redirect_date=<?php echo $tanggal_sql; ?>" class="icon-wrapper icon-proses">
+                                            <img src="../gambar/time2.png" alt="Proses">
+                                        </a>
+                                        <a href="../db-pages/update_status.php?id=<?php echo $booking['id']; ?>&status=Sudah Diproses&redirect_date=<?php echo $tanggal_sql; ?>" class="icon-wrapper icon-selesai">
+                                            <img src="../gambar/tick.png" alt="Selesai">
+                                        </a>
+                                    </div>
                                 </div>
                             </td>
                         </tr>
@@ -134,6 +139,28 @@ mysqli_close($connection);
         </table>
     </div>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggle = document.getElementById('date-dropdown-toggle');
+            const dateInput = document.getElementById('date-input-field');
+            const dateHeader = document.getElementById('selected-date');
+
+            if (toggle && dateInput && dateHeader) {
+                toggle.addEventListener('click', function() {
+                    dateHeader.style.display = 'none';
+                    dateInput.style.display = 'block';
+                    dateInput.focus();
+                    
+                    dateInput.click();
+                });
+                
+                dateInput.addEventListener('blur', function() {
+                    dateInput.style.display = 'none';
+                    dateHeader.style.display = 'block';
+                });
+            }
+        });
+    </script>
     <script src="../js/jadwal.js"></script> 
     <script src="../js/home.js"></script> 
 </body>
