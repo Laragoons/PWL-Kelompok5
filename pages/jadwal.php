@@ -1,5 +1,6 @@
 <?php
 session_start();
+date_default_timezone_set('Asia/Jakarta');
 require_once '../config/db-connection.php';
 
 $court_id = isset($_GET['id']) ? (int)$_GET['id'] : 1;
@@ -47,15 +48,15 @@ if ($stmt_details) {
 
 $current_court_config = $courts_config[$court_id] ?? $courts_config[1];
 $court_image = $current_court_config['image'];
-$booking_page_link = $current_court_config['booking_page'];
 
 $valid_dates = [];
-$base_date = '2025-09-01';
+$base_date = date('Y-m-d');
 for ($i = 0; $i < 7; $i++) {
     $date_sql = date('Y-m-d', strtotime("$base_date +$i days"));
     $date_display = date('j F Y', strtotime($date_sql));
     $valid_dates[$date_sql] = $date_display;
 }
+
 $tanggal_sql = isset($_GET['tanggal']) && isset($valid_dates[$_GET['tanggal']]) ? $_GET['tanggal'] : $base_date;
 $tanggal_tampil = $valid_dates[$tanggal_sql];
 
@@ -67,7 +68,7 @@ $all_hours[] = '00:00';
 $booked_hours = [];
 
 $sql_bookings = "SELECT start_time, end_time FROM bookings 
-                 WHERE court_id = ? AND booking_date = ?";
+                 WHERE court_id = ? AND booking_date = ? AND status != 'Dibatalkan'";
 $stmt_bookings = mysqli_prepare($connection, $sql_bookings);
 
 if ($stmt_bookings) {
@@ -80,13 +81,22 @@ if ($stmt_bookings) {
             $start_time = strtotime($row['start_time']);
             $end_time = strtotime($row['end_time']);
 
-            if ($end_time <= $start_time) {
-                $end_time = strtotime('+1 day', $end_time);
+            if ($end_time <= $start_time && $row['end_time'] !== '00:00') {
+                 $end_time = strtotime('+1 day', $end_time);
             }
+            if ($row['end_time'] === '00:00') {
+                 $end_time = strtotime('tomorrow 00:00'); 
+                 if ($start_time > $end_time) $end_time = strtotime('+1 day', $end_time);
+            }
+
             $current_time = $start_time;
             while ($current_time < $end_time) {
                 $hour_str = date('H:i', $current_time);
-                $booked_hours[$hour_str] = true;
+                if ($hour_str === '00:00' && $current_time > $start_time) {
+                     $booked_hours['00:00'] = true;
+                } else {
+                     $booked_hours[$hour_str] = true;
+                }
                 $current_time = strtotime('+1 hour', $current_time);
             }
         }
